@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/small_decoration_tile.tres" type="TileSet" id=1]
+[ext_resource path="res://resources/normal_decoration_tile.tres" type="TileSet" id=2]
+[ext_resource path="res://resources/floor.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/env/background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/env/mask.tscn" type="PackedScene" id=5]
+
+[node name="Level" type="Node2D"]
+
+[node name="LevelDesign" type="Node2D" parent="."]
+
+[node name="NormalDecorationTile" type="TileMap" parent="LevelDesign"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131081, 2, 0, 262143, 0, 0, 196609, 0, 0, 196611, 4, 0 )
+
+[node name="Floor" type="TileMap" parent="LevelDesign"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 262144, 0, 0, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 2, 262152, 0, 0, 262153, 0, 2, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131073, 327685, 0, 131074, 327688, 0, 131072, 327689, 0, 131074 )
+
+[node name="SmallDecorationTile" type="TileMap" parent="LevelDesign"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 458755, 1, 0, 458757, 1, 0, 458759, 1, 0, 458770, 1, 0, 458771, 1, 0 )
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="Mask" parent="." instance=ExtResource( 5 )]
