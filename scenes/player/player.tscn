@@ -133,3 +133,5 @@ anims/run = SubResource( 3 )
 [node name="LevelCamera" type="Camera2D" parent="."]
 current = true
 limit_top = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true

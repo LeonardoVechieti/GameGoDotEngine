@@ -15,7 +15,7 @@ func _physics_process(delta: float):
 	horizontal_movement_env()
 	vertical_movement_env()
 	gravity(delta)
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector2.UP)
 	player_sprite.animate(velocity)
 	
 	
