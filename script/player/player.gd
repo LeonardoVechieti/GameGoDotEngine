@@ -8,11 +8,11 @@ var velocity: Vector2
 var jump_count: int = 0
 var landing: bool = false
 #Definindo as variaveis de atack (Estados)
-var attacking: boll = false
-var defending: boll = false
-var chouching: boll = false
+var attacking: bool = false
+var defending: bool = false
+var crouching: bool = false
 #Definindo as variaveis de atack (Logica)
-var can_track_input: boll = true #Impede de realizar outros movimentos
+var can_track_input: bool = true #Impede de realizar outros movimentos
 
 #Variaveis de movimentação
 export(int) var speed
@@ -50,7 +50,7 @@ func action_env() -> void:
 	
 func attack() -> void:
 	#Se o player estiver atancando, defendendo, ou agachado retorna true 
-	var attack_condition: boll = not attacking and not crouching and not defending
+	var attack_condition: bool = not attacking and not crouching and not defending
 	if Input.is_action_just_pressed("attack") and attack_condition and is_on_floor():
 		#habilita a possibilidade de atacke
 		attacking =true
