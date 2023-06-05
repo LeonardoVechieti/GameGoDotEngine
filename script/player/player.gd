@@ -30,15 +30,19 @@ func _physics_process(delta: float):
 	
 func horizontal_movement_env() -> void:
 	var input_direction: float = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	if can_track_input == false or attacking:
+		velocity.x = 0
+		return
+		
 	velocity.x = input_direction * speed
 	print(velocity.x)
-
+	
 
 func vertical_movement_env() -> void: 
 	if is_on_floor(): 
 		jump_count = 0
-		
-	if Input.is_action_just_pressed("ui_select") and jump_count < 2:
+	var jump_condition: bool = can_track_input and not attacking
+	if Input.is_action_just_pressed("ui_select") and jump_count < 2 and jump_condition:
 		jump_count += 1
 		velocity.y = jump_speed
 		
@@ -54,6 +58,7 @@ func attack() -> void:
 	if Input.is_action_just_pressed("attack") and attack_condition and is_on_floor():
 		#habilita a possibilidade de atacke
 		attacking =true
+		player_sprite.normal_attack = true
 
 func crouch() -> void:
 	if Input.is_action_pressed("crouch") and is_on_floor() and not defending:
@@ -62,6 +67,7 @@ func crouch() -> void:
 	elif not defending:
 		crouching = false
 		can_track_input = true
+		player_sprite.crouching_off = true
 		
 func defense() -> void: 
 	if Input.is_action_pressed("defense") and is_on_floor() and not crouching:
@@ -70,6 +76,7 @@ func defense() -> void:
 	elif not crouching:
 		defending =false
 		can_track_input= true
+		player_sprite.shield_off = true
 	
 func gravity(delta: float) -> void:
 	velocity.y += delta * player_gravity

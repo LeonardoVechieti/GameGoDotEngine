@@ -23,6 +23,7 @@ func animate(direction: Vector2) -> void:
 		horizontal_behavior(direction)
 	#horizontal_behavior(direction)
 	#print(direction)
+	
 func action_behavior() -> void:
 	if player.attacking and normal_attack:
 		animation.play("attack" + suffix) #concatenação de strings
@@ -44,7 +45,7 @@ func verify_position(direction: Vector2) -> void:
 	if direction.x > 0:
 		flip_h = false
 		#Modifica o suffix dependendo do posição de ataque
-		suffix = "_rigth"
+		suffix = "_right"
 	elif direction.x < 0: 
 		suffix = "_left"
 		flip_h = true
@@ -62,7 +63,9 @@ func on_animation_finished(anim_name: String):
 			player.landing = false
 			#player.set_physics_process(true)
 		"attack_left":
-			pass
+			normal_attack = false
+			player.attacking = false
 		"attack_right": 
-			pass
+			normal_attack = false
+			player.attacking = false 
 	
