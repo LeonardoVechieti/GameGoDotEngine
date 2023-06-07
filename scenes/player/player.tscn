@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/player/char_red.png" type="Texture" id=1]
 [ext_resource path="res://script/player/player.gd" type="Script" id=2]
 [ext_resource path="res://script/player/player_texture.gd" type="Script" id=3]
+[ext_resource path="res://assets/effect/light.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 6, 15.5 )
@@ -399,6 +400,62 @@ tracks/0/keys = {
 "values": [ 85, 85 ]
 }
 
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "ligth_animation"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.3, 0.25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.8, 0.6 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 speed = 75
@@ -449,5 +506,15 @@ shape = SubResource( 10 )
 [node name="WallRay" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 5.2, 0 )
+
+[node name="Light" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+texture_scale = 0.3
+energy = 0.8
+
+[node name="Animation" type="AnimationPlayer" parent="Light"]
+autoplay = "ligth_animation"
+anims/RESET = SubResource( 16 )
+anims/ligth_animation = SubResource( 17 )
 
 [connection signal="animation_finished" from="Animation" to="Texture" method="on_animation_finished"]
