@@ -32,6 +32,7 @@ var level_dict: Dictionary = {
 }
 
 export(NodePath) onready var player = get_node(player) as KinematicBody2D
+export(NodePath) onready var collision_area =  get_node(collision_area) as Area2D
 
 func _ready() -> void:
 	current_mana = base_mana + bonus_mana
@@ -99,12 +100,16 @@ func _process(_delta) -> void:
 
 
 
+func on_collision_area_entered(area):
+	if area.name == "EnemyAttackArea":
+		update_health("Decrease", area.damege)
+		collision_area.set_deferred("monitoring", false)
+		
 
 
+func _on_InvencibilityTimer_timeout():
+	pass # Replace with function body.
 
 
-
-
-
-
-
+func on_invencibility_timer_timeout():
+	pass # Replace with function body.
