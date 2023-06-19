@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/player/char_red.png" type="Texture" id=1]
 [ext_resource path="res://script/player/player.gd" type="Script" id=2]
@@ -285,6 +285,22 @@ tracks/0/keys = {
 "values": [ 71, 71, 72 ]
 }
 
+[sub_resource type="Animation" id=18]
+resource_name = "dead"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 48, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 ]
+}
+
 [sub_resource type="Animation" id=4]
 resource_name = "fall"
 length = 0.4
@@ -300,6 +316,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 33, 34, 35, 36 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 40, 41, 42 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -473,6 +505,7 @@ vframes = 11
 script = ExtResource( 3 )
 animation = NodePath("../Animation")
 player = NodePath("..")
+attack_collision = NodePath("../AttackArea/Collision")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -485,7 +518,9 @@ anims/attack_left = SubResource( 8 )
 anims/attack_right = SubResource( 14 )
 anims/attack_rigt = SubResource( 11 )
 anims/crouch = SubResource( 12 )
+anims/dead = SubResource( 18 )
 anims/fall = SubResource( 4 )
+anims/hit = SubResource( 19 )
 anims/idle = SubResource( 2 )
 anims/jump = SubResource( 5 )
 anims/landing = SubResource( 6 )
@@ -520,5 +555,6 @@ anims/ligth_animation = SubResource( 17 )
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource( 5 )
+player = NodePath("..")
 
 [connection signal="animation_finished" from="Animation" to="Texture" method="on_animation_finished"]
