@@ -2,6 +2,7 @@ extends Node
 
 class_name PlayerStats
 
+onready var invencibility_timer: Timer = get_node("InvencibilityTimer")
 var shielding: bool = false
 
 var base_health: int = 15
@@ -104,12 +105,12 @@ func on_collision_area_entered(area):
 	if area.name == "EnemyAttackArea":
 		update_health("Decrease", area.damege)
 		collision_area.set_deferred("monitoring", false)
+		#inicia o timer
+		invencibility_timer.start(area.invencibility_timer)
+		
 		
 
 
-func _on_InvencibilityTimer_timeout():
-	pass # Replace with function body.
-
-
 func on_invencibility_timer_timeout():
-	pass # Replace with function body.
+	collision_area.set_deferred("monitoring", true)
+	
