@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://script/env/background.gd"
 }, {
 "base": "Area2D",
+"class": "CollisionArea",
+"language": "GDScript",
+"path": "res://script/enemy/collision_area.gd"
+}, {
+"base": "Area2D",
 "class": "DetectionArea",
 "language": "GDScript",
 "path": "res://script/enemy/detection_area.gd"
@@ -56,6 +61,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Background": "",
+"CollisionArea": "",
 "DetectionArea": "",
 "EnemyTemplate": "",
 "EnemyTexture": "",

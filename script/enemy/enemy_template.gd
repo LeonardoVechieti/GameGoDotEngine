@@ -67,6 +67,8 @@ func verify_position() -> void:
 	
 	
 	
+func kill_enemy() -> void:
+	animation.play("kill")
 	
 	
 	
