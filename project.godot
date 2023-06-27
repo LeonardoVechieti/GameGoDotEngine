@@ -14,20 +14,62 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://script/env/background.gd"
 }, {
+"base": "Area2D",
+"class": "CollisionArea",
+"language": "GDScript",
+"path": "res://script/enemy/collision_area.gd"
+}, {
+"base": "Area2D",
+"class": "DetectionArea",
+"language": "GDScript",
+"path": "res://script/enemy/detection_area.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "EnemyTemplate",
+"language": "GDScript",
+"path": "res://script/enemy/enemy_template.gd"
+}, {
+"base": "Sprite",
+"class": "EnemyTexture",
+"language": "GDScript",
+"path": "res://script/enemy/enemy_texture.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://script/management/level.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://script/player/player.gd"
 }, {
+"base": "Node",
+"class": "PlayerStats",
+"language": "GDScript",
+"path": "res://script/player/player_stats.gd"
+}, {
 "base": "Sprite",
 "class": "PlayerTexture",
 "language": "GDScript",
 "path": "res://script/player/player_texture.gd"
+}, {
+"base": "EnemyTexture",
+"class": "WhaleTexture",
+"language": "GDScript",
+"path": "res://script/enemy/whale/texture.gd"
 } ]
 _global_script_class_icons={
 "Background": "",
+"CollisionArea": "",
+"DetectionArea": "",
+"EnemyTemplate": "",
+"EnemyTexture": "",
+"Level": "",
 "Player": "",
-"PlayerTexture": ""
+"PlayerStats": "",
+"PlayerTexture": "",
+"WhaleTexture": ""
 }
 
 [application]
@@ -48,6 +90,31 @@ window/stretch/aspect="keep"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+defense={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+crouch={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Tile"
+2d_physics/layer_2="SlideTile"
+2d_physics/layer_3="Player"
+2d_physics/layer_4="Enemy"
 
 [physics]
 
