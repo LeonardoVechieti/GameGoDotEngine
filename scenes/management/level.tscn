@@ -48,7 +48,23 @@ position = Vector2( 33, 38 )
 position = Vector2( 162, 116 )
 
 [node name="Whale2" parent="Enemy" instance=ExtResource( 8 )]
-position = Vector2( 732, 122 )
+position = Vector2( 745, 121 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Whale3" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 615, 315 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Whale4" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 694, 314 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Whale5" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 837, 120 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Whale6" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 129, 120 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Weather" parent="." instance=ExtResource( 9 )]
